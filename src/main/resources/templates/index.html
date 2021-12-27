@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Web Oder & DCV</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+	<h1>Web Oder & DCV</h1>
+	<hr>
+
+	<form class="form-signin" th:action="@{/checkUsers}" th:object="${customer}" method="POST">
+		<p>
+		<select class="form-control" th:field="*{customerCompany}">
+			<option th:value="'FDI'" th:text="FDI"></option>
+			<option th:value="'FDN'" th:text="FDN"></option>
+		</select>
+		</p>
+		<p>
+			<input type="text" name="usernameOld" th:field="*{usernameOld}" class="form-control"
+				   placeholder="Username" required autofocus />
+		</p>
+		<p>
+			<input type="password" name="password" th:field="*{passwordOld}" class="form-control"
+				   placeholder="Password" required autofocus/>
+		</p>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button><br/>
+	</form>
+
+	<div class="alert alert-danger" th:if="${statusError}">
+		<label>Username atau password tidak valid.</label>
+	</div>
+
+	<div class="alert alert-success" th:if="${statusError == false}">
+		<label>Berhasil ..</label>
+
+		<input type="text" th:value="${usernameBaru}"
+			   class="form-control mb-4 col-4">
+
+		<input type="text" th:value="${passwordBaru}"
+			   class="form-control mb-4 col-4">
+
+	</div>
+
+	<hr>
+
+	<a th:href = "@{/}"> Alamat Baru DCV	</a>
+	</br>
+	<a th:href = "@{/}"> Alamat Baru Web Order</a>
+</div>
+
+
+</div>
+
+
+<!--<div class="container">-->
+<!--		<h1>Web Oder & DCV</h1>-->
+<!--		<hr>-->
+<!--		<h2>Check</h2>-->
+
+<!--		<form action="#" th:action="@{/checkUsers}" th:object="${customer}"-->
+<!--			method="POST">-->
+<!--				<select class="form-control mb-4 col-4" th:field="*{customerCompany}">-->
+<!--				    <option th:value="'FDI'" th:text="FDI"></option>-->
+<!--				    <option th:value="'FDN'" th:text="FDN"></option>-->
+<!--				</select>-->
+
+<!--				<input type="text" th:field="*{usernameOld}"-->
+<!--				placeholder="Username" class="form-control mb-4 col-4">-->
+<!--				<div class="alert alert-warning" th:if="${#fields.hasErrors('usernameOld')}" th:errors="*{usernameOld}"></div>-->
+
+<!--				<input type="text" th:field="*{passwordOld}"-->
+<!--				placeholder="Password" class="form-control mb-4 col-4">-->
+<!--				<div class="alert alert-warning" th:if="${#fields.hasErrors('passwordOld')}" th:errors="*{passwordOld}"></div>-->
+
+<!--				<button type="submit" class="btn btn-info col-2">Submit</button>-->
+<!--		</form>-->
+
+
+<!--		<div class="alert alert-danger" th:if="${statusError}">-->
+<!--			<label>Username atau password tidak valid.</label>-->
+<!--		</div>-->
+
+<!--		<div class="alert alert-success" th:if="${statusError == false}">-->
+<!--			<label>Berhasil ..</label>-->
+
+<!--			<input type="text" th:value="${usernameBaru}"-->
+<!--				 class="form-control mb-4 col-4">-->
+
+<!--			<input type="text" th:value="${passwordBaru}"-->
+<!--				 class="form-control mb-4 col-4">-->
+
+<!--		</div>-->
+
+<!--		<hr>-->
+
+<!--		<a th:href = "@{/}"> Alamat Baru DCV	</a>-->
+<!--		</br>-->
+<!--		<a th:href = "@{/}"> Alamat Baru Web Order</a>-->
+<!--	</div>-->
+</body>
+</html>
